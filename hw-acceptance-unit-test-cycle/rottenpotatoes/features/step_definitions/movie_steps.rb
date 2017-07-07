@@ -1,4 +1,4 @@
-#Step defination for director features
+Step defination for director features
 
 Given /the following movies exist/ do |movie_table|
   movie_table.hashes.each do |movie|

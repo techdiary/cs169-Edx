@@ -887,3 +887,659 @@ Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.1ms)
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-06 16:27:24.790971"], ["updated_at", "2017-07-06 16:27:24.790971"]]
   [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
   [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (10.0ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.328454"], ["updated_at", "2017-07-07 09:44:21.328454"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.360153"], ["updated_at", "2017-07-07 09:44:21.360153"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.362269"], ["updated_at", "2017-07-07 09:44:21.362269"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.364222"], ["updated_at", "2017-07-07 09:44:21.364222"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 15:14:21 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (86.6ms)
+Completed 200 OK in 366ms (Views: 364.4ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 15:14:21 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 09:44:21.871349"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 15:14:21 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.913934"], ["updated_at", "2017-07-07 09:44:21.913934"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.917167"], ["updated_at", "2017-07-07 09:44:21.917167"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.920442"], ["updated_at", "2017-07-07 09:44:21.920442"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.925399"], ["updated_at", "2017-07-07 09:44:21.925399"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.938359"], ["updated_at", "2017-07-07 09:44:21.938359"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.941367"], ["updated_at", "2017-07-07 09:44:21.941367"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.943888"], ["updated_at", "2017-07-07 09:44:21.943888"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 09:44:21.946627"], ["updated_at", "2017-07-07 09:44:21.946627"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.065648"], ["updated_at", "2017-07-07 12:02:10.065648"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.069790"], ["updated_at", "2017-07-07 12:02:10.069790"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.071676"], ["updated_at", "2017-07-07 12:02:10.071676"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.073941"], ["updated_at", "2017-07-07 12:02:10.073941"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 17:32:10 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 197ms (Views: 195.8ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 17:32:10 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:02:10.310261"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 17:32:10 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.334295"], ["updated_at", "2017-07-07 12:02:10.334295"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.336335"], ["updated_at", "2017-07-07 12:02:10.336335"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.338209"], ["updated_at", "2017-07-07 12:02:10.338209"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.340001"], ["updated_at", "2017-07-07 12:02:10.340001"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.348859"], ["updated_at", "2017-07-07 12:02:10.348859"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.350863"], ["updated_at", "2017-07-07 12:02:10.350863"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.352810"], ["updated_at", "2017-07-07 12:02:10.352810"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:02:10.354591"], ["updated_at", "2017-07-07 12:02:10.354591"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.683823"], ["updated_at", "2017-07-07 12:06:27.683823"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.688032"], ["updated_at", "2017-07-07 12:06:27.688032"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.689931"], ["updated_at", "2017-07-07 12:06:27.689931"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.691725"], ["updated_at", "2017-07-07 12:06:27.691725"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 17:36:27 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (17.0ms)
+Completed 200 OK in 175ms (Views: 173.7ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 17:36:27 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:06:27.906013"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 17:36:27 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.928604"], ["updated_at", "2017-07-07 12:06:27.928604"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.930613"], ["updated_at", "2017-07-07 12:06:27.930613"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.932669"], ["updated_at", "2017-07-07 12:06:27.932669"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.934631"], ["updated_at", "2017-07-07 12:06:27.934631"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.943527"], ["updated_at", "2017-07-07 12:06:27.943527"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.945520"], ["updated_at", "2017-07-07 12:06:27.945520"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.947439"], ["updated_at", "2017-07-07 12:06:27.947439"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:06:27.949372"], ["updated_at", "2017-07-07 12:06:27.949372"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.218280"], ["updated_at", "2017-07-07 12:07:06.218280"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.222455"], ["updated_at", "2017-07-07 12:07:06.222455"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.224407"], ["updated_at", "2017-07-07 12:07:06.224407"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.226089"], ["updated_at", "2017-07-07 12:07:06.226089"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 17:37:06 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (15.9ms)
+Completed 200 OK in 176ms (Views: 175.0ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 17:37:06 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:07:06.439460"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 17:37:06 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.460036"], ["updated_at", "2017-07-07 12:07:06.460036"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.462035"], ["updated_at", "2017-07-07 12:07:06.462035"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.463898"], ["updated_at", "2017-07-07 12:07:06.463898"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.465751"], ["updated_at", "2017-07-07 12:07:06.465751"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.474066"], ["updated_at", "2017-07-07 12:07:06.474066"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.476096"], ["updated_at", "2017-07-07 12:07:06.476096"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.478001"], ["updated_at", "2017-07-07 12:07:06.478001"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:06.479814"], ["updated_at", "2017-07-07 12:07:06.479814"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:26.910622"], ["updated_at", "2017-07-07 12:07:26.910622"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:26.914851"], ["updated_at", "2017-07-07 12:07:26.914851"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:26.916846"], ["updated_at", "2017-07-07 12:07:26.916846"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:26.918586"], ["updated_at", "2017-07-07 12:07:26.918586"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.205782"], ["updated_at", "2017-07-07 12:07:35.205782"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.209909"], ["updated_at", "2017-07-07 12:07:35.209909"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.211929"], ["updated_at", "2017-07-07 12:07:35.211929"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.213681"], ["updated_at", "2017-07-07 12:07:35.213681"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 17:37:35 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (15.0ms)
+Completed 200 OK in 172ms (Views: 169.9ms | ActiveRecord: 0.3ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 17:37:35 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:07:35.425838"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 17:37:35 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.448336"], ["updated_at", "2017-07-07 12:07:35.448336"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.450373"], ["updated_at", "2017-07-07 12:07:35.450373"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.452375"], ["updated_at", "2017-07-07 12:07:35.452375"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.454161"], ["updated_at", "2017-07-07 12:07:35.454161"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.463183"], ["updated_at", "2017-07-07 12:07:35.463183"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.465191"], ["updated_at", "2017-07-07 12:07:35.465191"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.467113"], ["updated_at", "2017-07-07 12:07:35.467113"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:07:35.469035"], ["updated_at", "2017-07-07 12:07:35.469035"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:08.981405"], ["updated_at", "2017-07-07 12:16:08.981405"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:08.985695"], ["updated_at", "2017-07-07 12:16:08.985695"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:08.987982"], ["updated_at", "2017-07-07 12:16:08.987982"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:16:08.990531"], ["updated_at", "2017-07-07 12:16:08.990531"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 17:46:09 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (15.8ms)
+Completed 200 OK in 181ms (Views: 179.9ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 17:46:09 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:16:09.212820"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 17:46:09 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.236706"], ["updated_at", "2017-07-07 12:16:09.236706"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.238717"], ["updated_at", "2017-07-07 12:16:09.238717"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.240738"], ["updated_at", "2017-07-07 12:16:09.240738"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.242835"], ["updated_at", "2017-07-07 12:16:09.242835"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.252465"], ["updated_at", "2017-07-07 12:16:09.252465"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.254478"], ["updated_at", "2017-07-07 12:16:09.254478"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.256404"], ["updated_at", "2017-07-07 12:16:09.256404"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:16:09.258489"], ["updated_at", "2017-07-07 12:16:09.258489"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.356757"], ["updated_at", "2017-07-07 12:29:03.356757"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.361001"], ["updated_at", "2017-07-07 12:29:03.361001"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.363004"], ["updated_at", "2017-07-07 12:29:03.363004"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.364933"], ["updated_at", "2017-07-07 12:29:03.364933"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 17:59:03 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 174ms (Views: 173.0ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 17:59:03 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:29:03.579279"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 17:59:03 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.602408"], ["updated_at", "2017-07-07 12:29:03.602408"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.604451"], ["updated_at", "2017-07-07 12:29:03.604451"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.606353"], ["updated_at", "2017-07-07 12:29:03.606353"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.608151"], ["updated_at", "2017-07-07 12:29:03.608151"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.617332"], ["updated_at", "2017-07-07 12:29:03.617332"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.619353"], ["updated_at", "2017-07-07 12:29:03.619353"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.621233"], ["updated_at", "2017-07-07 12:29:03.621233"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:29:03.623038"], ["updated_at", "2017-07-07 12:29:03.623038"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.586181"], ["updated_at", "2017-07-07 12:46:18.586181"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.590999"], ["updated_at", "2017-07-07 12:46:18.590999"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.592973"], ["updated_at", "2017-07-07 12:46:18.592973"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.594698"], ["updated_at", "2017-07-07 12:46:18.594698"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 18:16:18 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (17.6ms)
+Completed 200 OK in 185ms (Views: 183.0ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 18:16:18 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:46:18.819525"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 18:16:18 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.841398"], ["updated_at", "2017-07-07 12:46:18.841398"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.843464"], ["updated_at", "2017-07-07 12:46:18.843464"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.845361"], ["updated_at", "2017-07-07 12:46:18.845361"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.847152"], ["updated_at", "2017-07-07 12:46:18.847152"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.855758"], ["updated_at", "2017-07-07 12:46:18.855758"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.857931"], ["updated_at", "2017-07-07 12:46:18.857931"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.860487"], ["updated_at", "2017-07-07 12:46:18.860487"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:46:18.862334"], ["updated_at", "2017-07-07 12:46:18.862334"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.314110"], ["updated_at", "2017-07-07 12:47:38.314110"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.319127"], ["updated_at", "2017-07-07 12:47:38.319127"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.321533"], ["updated_at", "2017-07-07 12:47:38.321533"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.323285"], ["updated_at", "2017-07-07 12:47:38.323285"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Alien"]]
+Started GET "/movies/3/edit" for 127.0.0.1 at 2017-07-07 18:17:38 +0530
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered movies/edit.html.haml within layouts/application (16.1ms)
+Completed 200 OK in 184ms (Views: 182.3ms | ActiveRecord: 0.2ms)
+Started PUT "/movies/3" for 127.0.0.1 at 2017-07-07 18:17:38 +0530
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Alien", "director"=>"Ridley Scott", "rating"=>"R", "release_date(1i)"=>"1979", "release_date(2i)"=>"5", "release_date(3i)"=>"25"}, "commit"=>"Update Movie Info", "id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "movies" SET "director" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["director", "Ridley Scott"], ["updated_at", "2017-07-07 12:47:38.547119"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/3
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+Started GET "/movies/3" for 127.0.0.1 at 2017-07-07 18:17:38 +0530
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered movies/show.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.571674"], ["updated_at", "2017-07-07 12:47:38.571674"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.574531"], ["updated_at", "2017-07-07 12:47:38.574531"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.577517"], ["updated_at", "2017-07-07 12:47:38.577517"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.580214"], ["updated_at", "2017-07-07 12:47:38.580214"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Star Wars"], ["rating", "PG"], ["director", "George Lucas"], ["release_date", "1977-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.589698"], ["updated_at", "2017-07-07 12:47:38.589698"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Blade Runner"], ["rating", "PG"], ["director", "Ridley Scott"], ["release_date", "1982-06-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.591733"], ["updated_at", "2017-07-07 12:47:38.591733"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Alien"], ["rating", "R"], ["director", ""], ["release_date", "1979-05-25 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.593766"], ["updated_at", "2017-07-07 12:47:38.593766"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("title", "rating", "director", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["title", "THX-1138"], ["rating", "R"], ["director", "George Lucas"], ["release_date", "1971-03-11 00:00:00.000000"], ["created_at", "2017-07-07 12:47:38.596892"], ["updated_at", "2017-07-07 12:47:38.596892"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
