@@ -1,7 +1,5 @@
-
-%h2 Showing Movies of #{@movie.director}
-%ul#directors
-  %li
-    Movies:
-    = @movie.title
-
+%h2 Similar Movies of this Director:
+%ul
+  - @movie.each do |i|
+    %li
+      = i.title

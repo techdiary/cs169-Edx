@@ -1,14 +1,14 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/models/movie.rb": [
+      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/models/movie.rb": [
         1,
         1,
         0,
         null,
         null
       ],
-      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/movies_controller.rb": [
+      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/movies_controller.rb": [
         1,
         null,
         1,
@@ -16,8 +16,8 @@
         null,
         null,
         1,
-        1,
-        1,
+        4,
+        4,
         null,
         null,
         null,
@@ -70,20 +70,29 @@
         0,
         0,
         0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        0,
+        null,
+        1,
+        null,
         null,
         null,
         null
       ],
-      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/application_controller.rb": [
+      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/application_helper.rb": [
+      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/movies_helper.rb": [
+      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/movies_helper.rb": [
         1,
         null,
         1,
@@ -92,6 +101,6 @@
         null
       ]
     },
-    "timestamp": 1499431658
+    "timestamp": 1499703624
   }
 }

@@ -62,7 +62,12 @@ class MoviesController < ApplicationController
   end
   
   def same_director
-    @movie= Movie.find_by director: params[:director]
+      if params[:director] == nil || params[:director] == ""
+          redirect_to movies_path
+          byebug
+      else
+        @movie= Movie.where(director: params[:director])
+      end
   end
 
 end
