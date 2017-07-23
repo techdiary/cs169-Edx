@@ -1,14 +1,14 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/models/movie.rb": [
+      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/models/movie.rb": [
         1,
         1,
         0,
         null,
         null
       ],
-      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/movies_controller.rb": [
+      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/movies_controller.rb": [
         1,
         null,
         1,
@@ -83,16 +83,16 @@
         null,
         null
       ],
-      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/application_controller.rb": [
+      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/application_helper.rb": [
+      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/aayush/Documents/practise/rails-edx/acceptance-test/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/movies_helper.rb": [
+      "/home/l33t/Documents/projects/edx/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/movies_helper.rb": [
         1,
         null,
         1,
@@ -101,6 +101,6 @@
         null
       ]
     },
-    "timestamp": 1499703624
+    "timestamp": 1499747993
   }
 }
